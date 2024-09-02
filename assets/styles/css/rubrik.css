@@ -1,0 +1,18 @@
+.zxtitre2{
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 300;
+    font-size: 3.5em;
+    padding: 30px;
+    text-align: center;
+}
+
+.card-title{
+    font-family: "Amatic SC", sans-serif;
+    font-weight: bold;
+    font-size: 2em;;
+}
+
+.card-text{
+    font-family: "Jost", sans-serif;
+    font-size: 1.1em;
+}

@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    <div id="postCarousel" class="carousel slide" data-bs-ride="carousel" >
+        <div class="carousel-inner">
+            {% for postC in postCarrousel %}
+                <div class="carousel-item {% if loop.first %}active{% endif %}">
+                    <img src="{{ asset('divers/images/' ~ postC.image) }}" class="img-fluid" style="width:100%; height:620px;"
+                        alt="{{ postC.title }}">
+
+                    <div class="carousel-caption d-none d-md-block pb-5">
+                        <h1 class="zxtitre" style="margin-top:-250px;">{{ postC.title }}</h1>
+                        <h4 class="zxabstract" style="margin-top:50px;">{{ postC.abstract }}</h4>
+                        <a href="{{path('show', {id: postC.id})}}" class="btn btn-secondary btn-lg mt-5" style="background-color: #37463D;">Lire l'article</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#postCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#postCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+
+    <div class="container-fluid">
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-md-12 pb-5">
+                    <h2 style="border-bottom: 1px solid black" class="zxtitre2">Articles à la une</h2>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        {% for post in posts %}
+                            <div class="col-md-4">
+                                <div class="image1">
+                                    <a href="{{path('show', {'slug': post2.slug, id: post.id})}}">
+                                        <img class="img-fluid p-2" src="{{asset('divers/images/' ~ post.image )}}" alt="" style="height: 350px; border-radius: 10%;"><h3 class="text-over">{{post.title}}</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid"  style="background-color: #F1F1D3">
+        <div class="container pb-5">
+            <div class="row">
+                <div class="col-md-12 pb-5">
+                    <h2 style="border-bottom: 1px solid black" class="zxtitre2">Mes voyages sur les 5 continents</h2>
+                </div>
+                <!-- EUROPE -->
+                <div class="col-md-12 pb-5">
+                    <div class="row pb-5" style="border-bottom: 1px solid black">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <a class=" zximg" href="{{path('posts_by_rubrik', {id: 5})}}"><img class="img-fluid" src="{{asset('divers/images/majorque.jpg')}}" alt="europe"></a>
+                        </div>
+                        <div class="col-md-5  d-flex align-items-center justify-content-center" >
+                            <a href="{{path('posts_by_rubrik', {id: 5})}}"class="zxtitre3">EUROPE</a>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>                
+                </div>
+                <!-- AMERIQUE -->
+                <div class="col-md-12 pb-5">
+                    <div class="row pb-5" style="border-bottom: 1px solid black">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5  d-flex align-items-center justify-content-center" >
+                            <a href="{{path('posts_by_rubrik', {id: 1})}}"class="zxtitre3">AMÉRIQUE</a>
+                        </div>
+                        <div class="col-md-5">
+                            <a class=" zximg" href="{{path('posts_by_rubrik', {id: 1})}}"><img class="img-fluid" src="{{asset('divers/images/newyork.jpg')}}" alt="europe"></a>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>                
+                </div>
+                <!-- ASIE -->
+                <div class="col-md-12 pb-5">
+                    <div class="row pb-5" style="border-bottom: 1px solid black">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <a class=" zximg" href="{{path('posts_by_rubrik', {id: 3})}}"><img class="img-fluid" src="{{asset('divers/images/vietnam.jpg')}}" alt="europe"></a>
+                        </div>
+                        <div class="col-md-5  d-flex align-items-center justify-content-center" >
+                            <a href="{{path('posts_by_rubrik', {id: 3})}}"class="zxtitre3">ASIE</a>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>                
+                </div>
+                <!-- OCEANIE -->
+                <div class="col-md-12 pb-5">
+                    <div class="row pb-5" style="border-bottom: 1px solid black">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5  d-flex align-items-center justify-content-center" >
+                            <a href="{{path('posts_by_rubrik', {id: 4})}}" class="zxtitre3">OCÉANIE</a>
+                        </div>
+                        <div class="col-md-5">
+                            <a class=" zximg" href="{{path('posts_by_rubrik', {id: 4})}}"><img class="img-fluid" src="{{asset('divers/images/polynesie.jpg')}}" alt="europe"></a>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>                
+                </div>
+                <!-- AFRIQUE -->
+                <div class="col-md-12 pb-5">
+                    <div class="row pb-5" style="border-bottom: 1px solid black">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <a class=" zximg" href="{{path('posts_by_rubrik', {id: 2})}}"><img class="img-fluid" src="{{asset('divers/images/egypte.jpg')}}" alt="europe"></a>
+                        </div>
+                        <div class="col-md-5  d-flex align-items-center justify-content-center" >
+                            <a href="{{path('posts_by_rubrik', {id: 2})}}"class="zxtitre3">AFRIQUE</a>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

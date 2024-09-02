@@ -1,0 +1,12 @@
+.zximg{
+    width: 100px;
+    height: 60px;
+}
+
+.nav-link{
+    font-family: "Jost", sans-serif;  
+}
+
+.nav-link:hover{
+    color: #D6955B;
+}

@@ -1,0 +1,94 @@
+<div class="container-fluid mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img class="img-fluid zximg" src="{{asset('divers/images/globetrotteur.png')}}" alt="">
+            </div>
+            <div class="col-md-5">
+               <nav class="navbar navbar-expand-lg ">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="{{path('app_post')}}"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                               
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{path('app_post')}}">Accueil</a>
+                                </li>
+                                
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Destinations
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{path('posts_by_rubrik', {id: 1})}}">Amérique</a></li>
+                                        <li><a class="dropdown-item" href="{{path('posts_by_rubrik', {id: 2})}}">Afrique</a></li>
+                                        <li><a class="dropdown-item" href="{{path('posts_by_rubrik', {id: 5})}}">Europe</a></li>
+                                        <li><a class="dropdown-item" href="">Océanie</a></li>
+                                        <li><a class="dropdown-item" href="{{path('posts_by_rubrik', {id: 3})}}">Asie</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{path('posts_by_rubrik', {id: 6})}}">Astuces voyage</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#footer">Nos réseaux</a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {% if app.user %}
+                            {% if app.user.avatar is empty %}
+                            <li class="nav-item d-flex justify-content-end">
+                                <i class="fa-solid fa-circle-user"></i>
+                            </li> 
+                            <li class="nav-item d-flex justify-content-end">
+                                <a href="" class="nav-link">{{app.user.pseudo}}</a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-end">
+                                <a  class="nav-link" href="{{path('app_logout')}}"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+                            </li>
+                            {% elseif app.user.opption is same as ('yes') %}
+                            <li class="nav-item d-flex justify-content-end">
+                                <img src="{{asset('divers/avatars/' ~ app.user.avatar)}}" class="roundedImage" alt="" style="width:25px; height: 25px; border-radius: 50%">
+                            </li> 
+                            <li class="nav-item d-flex justify-content-end">
+                                <a href="" class="nav-link">{{app.user.pseudo}}</a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-end">
+                                <a href="{{path('app_logout')}}" class="nav-link"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-end">
+                                <a href="{{path('admin')}}" class="nav-link "><i class="fa-solid fa-circle-play"></i></a>
+                            </li> 
+                            {% else %}
+                                <li class="nav-item d-flex justify-content-end">
+                                    <img src="{{asset('divers/avatars/' ~ app.user.avatar)}}" class="roundedImage" alt="" style="width:25px; height: 25px; border-radius: 50%">
+                                </li> 
+                                <li class="nav-item d-flex justify-content-end">
+                                    <a href="" class="nav-link">{{app.user.pseudo}}</a>
+                                </li>
+                                <li class="nav-item d-flex justify-content-end">
+                                    <a  class="nav-link" href="{{path('app_logout')}}"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+                                </li>
+                            {% endif %}
+                        {% else %}
+                        <li class="nav-item d-flex justify-content-end">
+                            <a class="nav-link" href="{{path('app_login')}}" class="ps-3"><i class="fa-solid fa-2x fa-circle-user pt-1" style="color: black;"></i></a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="zxtitre2">{{posts.title}}</h2>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 p-4">
+                       <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="h3 pb-2">{{posts.abstract}}</h3>
+                            </div>
+                            <div class="col-md-12 pb-2">
+                                <img class="img-fluid " src="{{asset('divers/images/' ~ posts.image)}}" alt="">
+                            </div>
+                            <div class="col-md-12">
+                                <p class="zxtext pb-2">{{posts.content}}</p>
+                            </div>
+                            {% if posts.image2 is not empty %}
+                                <div class="col-md-12 pb-2">
+                                    <img class="img-fluid" src="{{asset('divers/images/' ~ posts.image2)}}" alt="">
+                                </div>
+                            {% endif %}
+                            {% if posts.content2 is not empty %}
+                                <div class="col-md-12">
+                                    <p class="zxtext pb-4">{{posts.content2}}</p>
+                                </div>
+                            {% endif %}
+                            <div class="row pb-4">
+                                <div class="col-md-6 zxtext d-flex align-items-center">
+                                    <img class="roundedImage" src="{{asset('divers/avatars/' ~ posts.user.avatar)}}" alt="">&ensp;{{posts.user.firstname}}&ensp;{{posts.user.lastname}}
+                                </div>
+                                 <div class="col-md-6 zxtext d-flex align-items-center justify-content-end">
+                                    {{posts.createdAt|date('D d M Y')}}
+                                </div>
+                            </div>
+                       </div> 
+                    </div>
+                    <div class="col-md-6 pt-5">
+                       <div class="row">
+                            <div class="col-md-12 pt-5" style="border-bottom: 1px solid black;">
+                                <p class="zxtext" >Commentaires :</p>
+                            </div>
+                            <div class="col-md-12 pt-3">
+                                {% if posts.comments|length < 1 %}
+                                    <p class="zxtext">Il n'y a pas encore de commentaires sur cet article. Soyez le premier...</p>
+                                {% else %}
+                                    <div class="row"  style="border-bottom: 1px solid black;">
+                                        {% for comment in comments %}
+                                            <div class="col-md-1"><img  class="roundedImage" src="{{asset('divers/avatars/' ~ comment.user.avatar )}}" alt=""></div>
+                                            <div class="col-md-11 pb-1 mb-1">
+                                                <p class="zxtext">{{comment.content}}</p>{{comment.createdAt|date('H : i')}}
+                                            </div> 
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            {% if app.user %}
+                                {{ form_start(comment_form) }}
+                                    <div class="col-md-12 pt-3">{{form_widget(comment_form.content)}} {{ form_errors(comment_form.content) }}</div>
+                                    <div class="col-md-12">{{form_widget(comment_form.save)}}</div>
+                                {{ form_end(comment_form) }}
+                            
+                            {% endif %}
+                        
+                       </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

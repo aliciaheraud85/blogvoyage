@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rubrique {{rubrik.name|capitalize}}{% endblock %}
+
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="zxtitre2 p-5" style="border-bottom: 1px solid black;">{{rubrik.name|upper}}</h2>
+            </div>
+                <div class="col-md-12 pt-5">
+                    <div class="row">
+                        <div class="col-md-1">
+                            
+                        </div>
+                    
+                        {% for post in posts %}
+                            <div class="col-md-5  d-flex justify-content-center">
+                                <div class="card" style="width: 28rem;">
+                                    <img src="{{asset('/divers/images/' ~ post.image)}}" class="card-img-top" alt="...">
+                                    <div class="card-body" style="text-align:center;">
+                                        <h5 class="card-title">{{ post.title }}</h5>
+                                        <p class="card-text">{{ post.abstract }}</p>
+                                        <a href="{{path('show', {'slug': post.slug, id: post.id})}}" class="btn btn-primary" style="background-color: #37463D; border: 1px solid #37463D; font-family: Jost, sans-serif; ">Lire cet article</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <div class="col-md-1">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-1">
+                            
+                        </div>
+                    
+                        {% for post2 in posts2 %}
+                            <div class="col-md-5 d-flex justify-content-center p-5" >
+                                <div class="card" style="width: 30rem;">
+                                    <img src="{{asset('/divers/images/' ~ post2.image)}}" class="card-img-top" alt="...">
+                                    <div class="card-body" style="text-align:center;">
+                                        <h5 class="card-title">{{ post2.title }}</h5>
+                                        <p class="card-text">{{ post2.abstract }}</p>
+                                        <a href="{{path('show', {'slug': post2.slug, id: post2.id})}}" class="btn btn-primary"  style="background-color: #37463D; border: 1px solid #37463D; ">Lire cet article</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <div class="col-md-1">
+                            
+                        </div>
+                    </div>
+                </div>
+         
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container-fluid mt-5" style="margin-bottom: 100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                
+            </div>
+            <div class="col-md-6" style="font-family: Jost, sans-serif">
+             <h1 class="zxtitre2">Je m'inscris</h1>
+                <form method="POST" enctype="multipart/form-data">
+                  {{ form_errors(registrationForm) }}
+
+                    {{ form_start(registrationForm) }}
+                        <div class="mb-3">
+                            {{ form_widget(registrationForm.firstname, {attr: {class: 'form-control', placeholder: 'Firstname'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_widget(registrationForm.lastname, {attr: {class: 'form-control', placeholder: 'Lastname'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_widget(registrationForm.email, {attr: {class: 'form-control', placeholder: 'Adresse email'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_widget(registrationForm.pseudo, {attr: {class: 'form-control', placeholder: 'Pseudo'}}) }}</div>
+                        <div class="mb-3">
+                            {{ form_widget(registrationForm.city, {attr: {class: 'form-control', placeholder: 'City'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(registrationForm.country, {attr: {class: 'form-control', placeholder: 'Country'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(registrationForm.avatar, {attr: {class: 'form-control', type: 'file', mapped: 'false'}}) }}
+                        </div>
+                        <div class="mb-3">
+                              {{ form_widget(registrationForm.plainPassword, {label: 'Password', attr: {class:'form-control', placeholder:'Mot de passe'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            
+                            {{ form_widget(registrationForm.agreeTerms, {att: {class:'form-check-label'}}) }}
+                            <label for="form-check-label">RGPD</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-md btn-success">Inscription</button>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                <div class="col-md-9">
+                                    
+                                </div>
+                                <div class="col-md-3 pt-5">
+                                    <a class="btn btn-md btn-secondary " href="{{path('app_login')}}">Me connecter</a>
+                                </div>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        
+                    {{ form_end(registrationForm) }}
+                </form>
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

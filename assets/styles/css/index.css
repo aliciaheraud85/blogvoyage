@@ -1,0 +1,59 @@
+
+
+
+.zxtitre{
+    font-family: "Amatic SC", sans-serif;
+    font-weight: bold;
+    font-size: 5em;
+    text-shadow: 1px 2px 5px black;
+}
+
+.zxabstract{
+    font-family: "Jost", sans-serif;
+    font-weight:350;
+    text-shadow: 1px 2px 5px black;
+}
+
+.zxtitre2{
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 300;
+    font-size: 3.5em;
+    padding: 30px;
+    text-align: center;
+}
+
+.image1{
+    position: relative;
+}
+
+.text-over{
+    position: absolute;
+    left: 50%;
+    top : 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-family: "Jost", sans-serif;
+    color: #ffff;
+    text-shadow: 1px 2px 5px black;
+    font-weight:350;
+}
+
+.image1:hover{
+    opacity: 50%;
+}
+
+.zxtitre3{
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 300;
+    font-size: 3.5em;
+    text-decoration: none;
+    color: black;
+}
+
+.zxtitre3:hover{
+    color: #D6955B;
+}
+
+.zximg:hover{
+    opacity: 70%;
+}
